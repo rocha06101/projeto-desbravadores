@@ -1,0 +1,44 @@
+.label-input {
+  display: flex;
+  transition: all 0.1s ease-in-out;
+  color: #2c2c54;
+  position: absolute;
+  top: 30%;
+  left: 18px;
+  transform: scale(0.95);
+  pointer-events: none;
+  font-size: 1.3rem;
+}
+
+.input-base {
+  border-radius: 5px;
+}
+
+.input-field:focus ~ .label-input,
+.input-field:not(:placeholder-shown) ~ .label-input {
+  top: -20% !important;
+  left: 2px !important;
+  transform: scale(0.8);
+  background: #30557a;
+  color: #fabe06;
+  padding: 0 6px;
+  opacity: 1;
+}
+
+.input-field {
+  transition: outline 0.2s ease;
+  font-size: 1rem;
+  outline-color: var(--button-text);
+  outline: unset;
+  border: 1px solid #bbbbbb;
+  padding: 17px 0 10px 0;
+  width: 100%;
+}
+
+.input-field:focus {
+  box-shadow: 0 0 0 1px #928a6b, 0 0 0 3px #fabe06;
+}
+
+.relative {
+  position: relative;
+}

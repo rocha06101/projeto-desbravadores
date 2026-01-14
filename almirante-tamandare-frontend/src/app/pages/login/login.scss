@@ -1,0 +1,74 @@
+.login-container{
+  height: 97.8vh; 
+  width: 100%;
+  background: linear-gradient(100deg, #041a4a 30%, #08369a 100%);
+  background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    background-color: #30557a;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40vw;
+    height: 70vh;
+    gap: 1.5rem; 
+
+    .input{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centraliza os app-input filhos */
+        gap: 2rem;
+        align-self: center;
+        margin-bottom: 2rem;
+    }
+}
+
+.center-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+    width: 80%;
+}
+
+app-input{
+    display: block;
+    width: 100%; /* ocupa toda a largura do .input para ficar centralizado */
+    max-width: 600px;
+}
+
+.button-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    align-self: center;
+    flex-direction: column;
+}
+app-button{
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+/* forçar botão interno a ocupar 100% */
+app-button ::ng-deep .c-button,
+app-button ::ng-deep .c-button--gooey {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+/* opcional: garantir que os blobs também acompanhem a largura */
+app-button ::ng-deep .c-button--gooey .c-button__blobs div {
+  width: 100%;
+}
