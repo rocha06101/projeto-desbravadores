@@ -11,25 +11,31 @@
                     <span class="second-text">Login</span>
                 </div>
             </div>
+            <form [formGroup]="form" (ngSubmit)="submit()" style="display: contents">
             <div class="input">
                 <app-input 
+                formControlName="email"
                 type="email"
                 iconSrc="/icons/letter.svg"
                 label="Email">
                 </app-input>
                 <app-input 
+                formControlName="password"
                 type="password"
                 iconSrc="/icons/padlock.svg"
                 label="Senha">
                 </app-input>
             </div>
+            <div *ngIf="error" style="color: red; text-align: center;">{{ error }}</div>
             <div class="button-login">
                 <app-button 
+                (click)="submit()"
                 label="Entrar">
                 </app-button>
                 <div class="first-div"><a href="">Esqueci a senha</a></div>
                 <div class="second-div">Não tem conta? <a href="/register">Cadastrar-se</a></div>
             </div>
+            </form>
         </div>
     </div>
     </div>
