@@ -11,7 +11,7 @@ describe('authGuard', () => {
     TestBed.configureTestingModule({});
   });
 
-  it('should be created', () => {
+  it('Deve ser criado', () => {
     expect(executeGuard).toBeTruthy();
   });
 });

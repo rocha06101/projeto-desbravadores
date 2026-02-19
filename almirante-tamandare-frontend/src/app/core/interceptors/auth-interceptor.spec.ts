@@ -11,7 +11,7 @@ describe('authInterceptor', () => {
     TestBed.configureTestingModule({});
   });
 
-  it('should be created', () => {
+  it('Deve ser criado', () => {
     expect(interceptor).toBeTruthy();
   });
 });
