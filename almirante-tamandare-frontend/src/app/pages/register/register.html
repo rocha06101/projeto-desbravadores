@@ -12,33 +12,40 @@
                     <span class="second-text">Cadastro</span>
                 </div>
             </div>
+
+            <form [formGroup]="form" (ngSubmit)="submit()" style="display: contents;">
             
             <div class="input">
                 
                 <app-select
+                formControlName="role"
                     label="Selecionar Cargo"
                     [options]="[
-                      { label: 'Diretor', value: 'desbravador' },
-                      { label: 'Tesoureiro', value: 'diretoria' },
-                      { label: 'Secretário', value: 'conselheiro' },
-                      { label: 'Almoxarifado', value: 'conselheiro' }
+                      { label: 'Diretor', value: 'diretor' },
+                      { label: 'Tesoureiro', value: 'tesoureiro' },
+                      { label: 'Secretário', value: 'secretário' },
+                      { label: 'Almoxarifado', value: 'almoxarifado' }
                     ]"
                     [arrow]="true"
                     icon="mail"
                 ></app-select>
 
                 <app-input
+                formControlName="fullName"
                     type="text"
                     iconSrc="/icons/user-icon.svg"
                     label="Nome Completo"
                     >                         
                 </app-input>
-                <app-input 
+
+                <app-input
+                formControlName="email" 
                 type="email"
                 iconSrc="/icons/letter.svg"
                 label="Email">
             </app-input>
                 <app-input 
+                formControlName="password"
                 type="password"
                 iconSrc="/icons/padlock.svg"
                 label="Senha">
@@ -57,16 +64,24 @@
                 </div>
                 
                 <app-input 
+                formControlName="confirmPassword"
                 type="password"
                 iconSrc="/icons/padlock.svg"
                 label="Confirmar senha">
                 </app-input>
             </div>
+            <div *ngIf="passwordMismatch" style="color: red; text-align: center;">
+                As senhas não coincidem.
+            </div>
+            <div *ngIf="error" style="color: red; text-align: center;"> {{ error }} </div>
+         
             <div class="button-register">
                 <app-button 
+                type="submit"
                 label="Cadastrar">
                 </app-button>
             </div>
+        </form>
         </div>
     </div>
     </div>

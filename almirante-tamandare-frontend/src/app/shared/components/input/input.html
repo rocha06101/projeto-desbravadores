@@ -1,14 +1,17 @@
 <div class="relative input-wrapper">
   @if (iconSrc){
       <span class="input-icon">
-        <img src="{{iconSrc}}" alt="{{iconAlt}}">
+        <img [src]="iconSrc" [alt]="iconAlt || label">
       </span>
     }
 
   <input class="input-cal input-base input-field"
     [placeholder]="placeholder"
     [type]="type"
-    (input)="onInput($event)"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="handleInput($event)"
+    (blur)="handleBlur()"
     >
 
   <label class="label-cal label-base label-input">
