@@ -102,6 +102,7 @@ Swagger:
 ```bash
 /swagger
 ```
+---
 
 🐳 Rodando com Docker
 
