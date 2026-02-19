@@ -61,5 +61,21 @@ Fluxo:
 3. Retorna:
    - Access Token
    - Refresh Token
-4. O Access Token deve ser enviado no header:
+4. O Access Token deve ser enviado no header
+
+---
+
+## ⚙️ Configuração
+
+As configurações do JWT ficam no `appsettings.json`:
+
+```json
+"Jwt": {
+  "Issuer": "projeto.desbravadores",
+  "Audience": "projeto.desbravadores",
+  "SigningKey": "CHAVE_SECRETA_AQUI",
+  "AccessTokenMinutes": 30,
+  "RefreshTokenDays": 7
+}
+
 
