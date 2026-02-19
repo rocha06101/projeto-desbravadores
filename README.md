@@ -78,5 +78,45 @@ As configurações do JWT ficam no `appsettings.json`:
   "AccessTokenMinutes": 30,
   "RefreshTokenDays": 7
 }
+```
+---
+
+▶️ Rodando Localmente
+
+Dentro da pasta backend.dotnet:
+
+```bash
+dotnet restore
+dotnet build
+dotnet run --project projeto.desbravadores.Api
+```
+
+A API estará disponível em:
+
+```bash
+https://localhost:xxxx
+```
+
+Swagger:
+
+```bash
+/swagger
+```
+
+🐳 Rodando com Docker
+
+Build da imagem:
+
+```bash
+docker build backend.dotnet \
+  --file backend.dotnet/projeto.desbravadores.Api/Dockerfile \
+  -t projeto-desbravadores:local
+```
+
+Rodar container:
+
+```bash
+http://localhost:8080
+```
 
 
