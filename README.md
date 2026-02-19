@@ -119,5 +119,20 @@ Rodar container:
 ```bash
 http://localhost:8080
 ```
+--- 
 
+## 🔄 CI - GitHub Actions
 
+O projeto possui pipeline de CI configurado para:
+
+- Restore
+- Build
+- Test
+- Build da imagem Docker
+
+A pipeline é executada automaticamente quando ocorre:
+
+- Push para a branch `main`
+- Pull Request direcionado para a branch `main`
+
+---
