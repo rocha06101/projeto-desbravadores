@@ -1,0 +1,6 @@
+services:
+  projeto.desbravadores.api:
+    image: ${DOCKER_REGISTRY-}projetodesbravadoresapi
+    build:
+      context: .
+      dockerfile: projeto.desbravadores.Api/Dockerfile
