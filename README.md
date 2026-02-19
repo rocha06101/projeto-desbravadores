@@ -141,7 +141,7 @@ A pipeline é executada automaticamente quando ocorre:
  - Persistência com EF Core
  - Implementação de Refresh Token seguro (rotação)
  - Controle de acesso baseado em Policies
- - Multi-tenant por igreja/unidade
+ - Multi-tenant por clube
  - Observabilidade (Serilog + Elastic + snapshot das request)
  - Deploy automático (Azure / AWS)
  - Testes automátizados ( Eu particularmente ainda não fiz por que não tenho pratica )  
