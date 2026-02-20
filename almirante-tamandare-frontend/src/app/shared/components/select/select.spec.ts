@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Select } from './select';
+import { SelectComponent } from './select';
 
 describe('Select', () => {
-  let component: Select;
-  let fixture: ComponentFixture<Select>;
+  let component: SelectComponent;
+  let fixture: ComponentFixture<SelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Select]
+      imports: [SelectComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Select);
+    fixture = TestBed.createComponent(SelectComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it('Deve ser criado', () => {
     expect(component).toBeTruthy();
   });
 });

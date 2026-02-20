@@ -17,7 +17,7 @@ describe('Register', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it('Deve ser criado', () => {
     expect(component).toBeTruthy();
   });
 });

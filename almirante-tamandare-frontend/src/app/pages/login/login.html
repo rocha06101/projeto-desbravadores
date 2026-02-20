@@ -29,7 +29,7 @@
             <div *ngIf="error" style="color: red; text-align: center;">{{ error }}</div>
             <div class="button-login">
                 <app-button 
-                (click)="submit()"
+                [type]="'submit'"
                 label="Entrar">
                 </app-button>
                 <div class="first-div"><a href="">Esqueci a senha</a></div>
@@ -45,4 +45,4 @@
         </div>
         <span>Clube de Desbravadores - Almirante Tamandaré</span>
     </div>
-</div>
+<div>

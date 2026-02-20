@@ -30,7 +30,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() iconAlt: string = '';
 
   value: string = '';
-  disable: boolean = false;
+  disabled = false;
 
   private onChange: (value: string) => void = () =>{};
   private onTouched: () => void = () => {};
@@ -51,7 +51,7 @@ writeValue(value: string): void {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disable = isDisabled;
+    this.disabled = isDisabled;
   }
 
   handleInput(e: Event) {
@@ -63,9 +63,5 @@ writeValue(value: string): void {
 
   handleBlur() {
     this.onTouched();
-  }
-
-  onInput(e: Event) {
-    this.value = (e.target as HTMLInputElement).value || '';
   }
 }

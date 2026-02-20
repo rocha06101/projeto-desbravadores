@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sections',
+  standalone: true, 
   imports: [CommonModule],
   templateUrl: './sections.html',
   styleUrl: './sections.scss',
