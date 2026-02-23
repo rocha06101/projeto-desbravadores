@@ -1,6 +1,7 @@
 ﻿using projeto.desbravadores.Application.Auth;
 using projeto.desbravadores.Application.Users;
 using projeto.desbravadores.Domain.Auth;
+using projeto.desbravadores.Domain.Users;
 
 namespace projeto.desbravadores.Infrastructure.Auth;
 
@@ -64,11 +65,10 @@ public sealed class AuthService(IUserRepository userRepository,
         if (stored is null || !stored.IsActive)
             throw new UnauthorizedAccessException("Token de atualização inválido.");
 
-        var user = await _userRepository.GetByIdAsync(stored.UserId, cancellationToken);
-        if (user is null)
-            throw new UnauthorizedAccessException("Usuário não encontrado.");
-
+        var user = await _userRepository.GetByIdAsync(stored.UserId, cancellationToken) ?? throw new UnauthorizedAccessException("Usuário não encontrado.");
+        
         var userData = new UserTokenData(UserId: user.Id, Email: user.Email, DisplayName: user.DisplayName, Roles: user.Roles);
+        
         var newTokens = _tokenService.GenerateTokens(userData);
 
         stored.RevokedAtUtc = DateTime.UtcNow;
@@ -86,5 +86,16 @@ public sealed class AuthService(IUserRepository userRepository,
         await _refreshTokenRepository.SaveChangesAsync(cancellationToken);
 
         return newTokens;
+    }
+    public async Task CreateNewUser(LoginRequest request, CancellationToken cancellationToken)
+    {
+        if (request is null)
+            throw new ArgumentNullException("O usuário precisa ser informado!");
+
+        string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
+        await _userRepository.CreateNewUser(request.Email,
+                                            passwordHash,
+                                            cancellationToken);
     }
 }
