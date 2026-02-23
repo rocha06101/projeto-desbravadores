@@ -9,9 +9,17 @@ public class UserRepository(
     DesbravadoresDbContext context
     ) : IUserRepository
 {
-    public Task<User?> FindByEmailAsync(string email, CancellationToken cancellationToken)
-        => context.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
+    public async Task<User?> FindByEmailAsync(string email, CancellationToken cancellationToken)
+        => await context.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
 
-    public Task<User?> GetByIdAsync(Guid userId, CancellationToken cancellationToken)
-        => context.Users.FindAsync(userId, cancellationToken).AsTask();
+    public async Task<User?> GetByIdAsync(Guid userId, CancellationToken cancellationToken)
+        => await context.Users.FindAsync(userId, cancellationToken).AsTask();
+
+    public async Task CreateNewUser(string email, string password, CancellationToken cancellationToken)
+    {
+        await context.Users.AddAsync(new User(email, string.Empty, password), cancellationToken);
+        await context.SaveChangesAsync(cancellationToken);
+    }
+
+
 }
