@@ -12,10 +12,13 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["projeto.desbravadores.Api.csproj", "."]
-RUN dotnet restore "./projeto.desbravadores.Api.csproj"
+COPY ["projeto.desbravadores.Api/projeto.desbravadores.Api.csproj", "projeto.desbravadores.Api/"]
+COPY ["projeto.desbravadores.Application/projeto.desbravadores.Application.csproj", "projeto.desbravadores.Application/"]
+COPY ["projeto.desbravadores.Domain/projeto.desbravadores.Domain.csproj", "projeto.desbravadores.Domain/"]
+COPY ["projeto.desbravadores.Infrastructure/projeto.desbravadores.Infrastructure.csproj", "projeto.desbravadores.Infrastructure/"]
+RUN dotnet restore "./projeto.desbravadores.Api/projeto.desbravadores.Api.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/projeto.desbravadores.Api"
 RUN dotnet build "./projeto.desbravadores.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

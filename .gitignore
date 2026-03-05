@@ -53,3 +53,6 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+#Apagando as migrations do repositório.
+projeto.desbravadores.Infrastructure/Migrations/

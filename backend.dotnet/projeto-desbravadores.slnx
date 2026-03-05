@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+  <Project Path="projeto.desbravadores.Api/projeto.desbravadores.Api.csproj" />
+  <Project Path="projeto.desbravadores.Application/projeto.desbravadores.Application.csproj" />
+  <Project Path="projeto.desbravadores.Domain/projeto.desbravadores.Domain.csproj" />
+  <Project Path="projeto.desbravadores.Infrastructure/projeto.desbravadores.Infrastructure.csproj" />
+</Solution>

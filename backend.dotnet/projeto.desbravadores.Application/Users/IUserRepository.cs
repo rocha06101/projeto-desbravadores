@@ -5,4 +5,8 @@ namespace projeto.desbravadores.Application.Users;
 public interface IUserRepository
 {
     Task<User?> FindByEmailAsync(string email, CancellationToken cancellationToken);
+
+    Task<User?> GetByIdAsync(Guid userId, CancellationToken cancellationToken);
+
+    Task CreateNewUser(string email, string password, CancellationToken cancellationToken);
 }
