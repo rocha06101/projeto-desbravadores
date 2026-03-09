@@ -1,26 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, throwError, delay } from 'rxjs';
-
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  private readonly http = inject(HttpClient);
+  private readonly baseUrl = environment.apiBaseUrl;
 
-  post<T>(url: string, body: any): Observable<T> {
 
-    // MOCK DO LOGIN
-    if (url === '/auth/login') {
-      if (body.email === 'admin@email.com' && body.password === '123456') {
-        return of({ token: 'fake-jwt-token' } as T).pipe(delay(800));
-      }
-      return throwError(() => new Error('Credenciais inválidas'));
-    }
-
-    return of(body as T).pipe(delay(500));
+post<T>(url: string, body: unknown): Observable<T> {
+    return this.http.post<T>(`${this.baseUrl}${url}`, body);
   }
 
+
   get<T>(url: string): Observable<T> {
-    return of([] as T).pipe(delay(500));
+    return this.http.get<T>(`${this.baseUrl}${url}`);
   }
 }
   

@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { InputComponent } from '../../shared/components/input/input';
 import { ButtonComponent } from '../../shared/components/button/button';
 import { SelectComponent } from '../../shared/components/select/select';
-import { FormBuilder, Validators, ReactiveFormsModule } from "@angular/forms";
-import { ApiService } from '../../core/services/api';
-
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-register',
@@ -16,9 +15,8 @@ import { ApiService } from '../../core/services/api';
   styleUrl: './register.scss',
 })
 export class Register {
-
-   private fb = inject(FormBuilder);
-  private api = inject(ApiService);
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
   private router = inject(Router);
 
   loading = false;
@@ -50,11 +48,12 @@ export class Register {
       return;
     }
 
-    const { confirmPassword, ...payload } = this.form.getRawValue();
+    const { email, password } = this.form.getRawValue();
 
     this.loading = true;
     this.error = '';
-this.api.post('/auth/register', payload).subscribe({
+
+    this.authService.register(email, password).subscribe({
       next: () => {
         this.loading = false;
         this.router.navigate(['/login']);

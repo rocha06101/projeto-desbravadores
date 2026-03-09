@@ -27,7 +27,6 @@ public sealed class AuthController(IAuthService authService)
         });
     }
     [HttpPost("refresh")]
-    [Microsoft.AspNetCore.Authorization.Authorize]
     public async Task<ActionResult<TokenResponse>> Refresh([FromBody] RefreshRequest request, CancellationToken cancellationToken)
     {
         var tokens = await authService.RefreshAsync(request, cancellationToken);
