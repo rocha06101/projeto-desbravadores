@@ -22,9 +22,9 @@ builder.Services.AddSwaggerGen();
 
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? ["http://localhost:4200"];
 
-builder.Services.AddCors( options =>
+builder.Services.AddCors(options =>
 {
-    options.AddDefaultPoçicy(Frontend, policy=>
+    options.AddPolicy("Frontend", policy=>
     {
         policy.WithOrigins(allowedOrigins)
             .AllowAnyHeader()

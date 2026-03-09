@@ -45,7 +45,7 @@ export class AuthService {
     const payload: RefreshRequest = { refreshToken: session.refreshToken };
 
     return this.api
-      .post<TokenResponse>('auth/refresh', payload)
+      .post<TokenResponse>('/auth/refresh', payload)
       .pipe(tap((tokens) => this.setSession(tokens)));
   }
 
